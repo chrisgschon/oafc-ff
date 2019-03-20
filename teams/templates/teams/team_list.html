@@ -1,0 +1,30 @@
+{% extends 'teams/base.html' %}
+
+{% block content %}
+<div class="container">
+    <table class = "table">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Team Name</th>
+                <th>Manager</th>
+                <th>Pick 1</th>
+                <th>Pick 2</th>
+                <th>Pick 3</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in teams %}
+            <tr>
+                <td>{{team.team_name}}</td>
+                <td>{{team.manager}}</td>
+                <td>{{team.player1}}</td>
+                <td>{{team.player2}}</td>
+                <td>{{team.player3}}</td>
+                <td>{{team.points}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
