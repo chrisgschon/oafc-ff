@@ -22,6 +22,5 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     path('admin/', admin.site.urls),
-    path('', include('teams.urls')),
-    path('', include('players.urls')),
+    path('', include('main.urls')),
 ]

@@ -18,9 +18,9 @@
             <tr>
                 <td>{{team.team_name}}</td>
                 <td>{{team.manager}}</td>
-                <td>{{team.player1}}</td>
-                <td>{{team.player2}}</td>
-                <td>{{team.player3}}</td>
+                {% for p in team.players.all %}
+                <td>{{p.name}}</td>
+                {% endfor %}
                 <td>{{team.points}}</td>
             </tr>
             {% endfor %}
