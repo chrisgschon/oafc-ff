@@ -19,5 +19,26 @@ def player_details(request, pk):
     return render(request, 'players/player_details.html')
 
 def manage(request):
-    form = TeamForm
-    return render(request, 'blog/post_edit.html', {'form': form})
+    if request.method == 'POST':
+        form = TeamForm(request.POST)
+        if form.is_valid():
+            team = form.save(commit=False)
+            team.manager = request.user
+            team.save()
+            team.players.set(form.cleaned_data['players'])
+            
+    else:
+        form = TeamForm
+    return render(request, 'manage/manage_team.html', {'form': form})
+
+# def some_view(request):
+#     if request.method == 'POST':
+#         form = SomeForm(request.POST)
+#         if form.is_valid():
+#             picked = form.cleaned_data.get('picked')
+#             # do something with your results
+#     else:
+#         form = SomeForm
+
+#     return render_to_response('some_template.html', {'form':form },
+#         context_instance=RequestContext(request))    
